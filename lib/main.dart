@@ -70,14 +70,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> _handleKeyPress(KeyEvent event) async {
     if (event is KeyDownEvent) {
       // Check which keys are pressed
-      if (event.logicalKey == LogicalKeyboardKey.keyJ) {
+      if (event.logicalKey == LogicalKeyboardKey.keyJ ||
+          event.logicalKey == LogicalKeyboardKey.arrowDown) {
         if (!(activeIndex + 1 > users.length - 1)) {
           setState(() {
             activeIndex += 1;
           });
         }
       }
-      if (event.logicalKey == LogicalKeyboardKey.keyK) {
+      if (event.logicalKey == LogicalKeyboardKey.keyK ||
+          event.logicalKey == LogicalKeyboardKey.arrowUp) {
         if (!(activeIndex - 1 < 0)) {
           setState(() {
             activeIndex -= 1;
@@ -167,9 +169,6 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  //TODO: set this this dynamically later
-  //final List<String> users = ["Ernesto", "Justin"];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -189,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(bottom: 12),
+                margin: const EdgeInsets.only(bottom: 14),
                 child: FloatingActionButton(
                   onPressed: () async {
                     String? result = await showInputModal(context);
@@ -205,12 +204,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-
       floatingActionButton: FloatingActionButton(
         onPressed: setPath,
         tooltip: 'Set browser path',
         child: const Icon(Icons.browser_updated),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
