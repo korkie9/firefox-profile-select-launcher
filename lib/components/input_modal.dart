@@ -7,7 +7,7 @@ Future<String?> showInputModal(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: const Text('Input Modal'),
+        title: const Text('New Profile Name'),
         content: TextField(
           controller: controller,
           decoration: const InputDecoration(hintText: 'Enter something...'),
